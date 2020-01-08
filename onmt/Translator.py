@@ -60,7 +60,7 @@ class Translator(object):
             for i in range(len(tokens)):
                 if tokens[i] == vocab.itos[onmt.IO.UNK]:
                     _, maxIndex = attn[i].max(0)
-                    tokens[i] = self.fields["src"].vocab.itos[src[maxIndex[0]]]
+                    tokens[i] = self.fields["src"].vocab.itos[src[maxIndex.item()]]
         return tokens
 
     def _runTarget(self, batch, data):
